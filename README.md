@@ -16,26 +16,21 @@
 ### Association
 
 - has_many :items
-- has_one :destination
 - has_many :purchases
 
 ## destination テーブル
 
-| Column       | Type       | Options                          |
-| ------------ | ---------- |--------------------------------- |
-| user         | references | null: false, foreign_key:true    |
-| post_code    | integer(8) | null: false                      |
-| prefecture   | string     | null: false                      |
-| city         | string     | null: false                      |
-| address      | string     | null: false                      |
-| phone_number | integer(11)| null: false, unique: true        |
-| family_name  | string     | null: false                      |
-| first_name   | string     | null: false                      |
-| purchase     | references | null: false, foreign_key: true   |
+| Column        | Type       | Options                          |
+| ------------- | ---------- |--------------------------------- |
+| post_code     | string     | null: false                      |
+| prefecture_id | integer    | null: false                      |
+| city          | string     | null: false                      |
+| address       | string     | null: false                      |
+| phone_number  | string     | null: false, unique: true        |
+| purchase      | references | null: false, foreign_key: true   |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :purchase
 
 ## items テーブル
