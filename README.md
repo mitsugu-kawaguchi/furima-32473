@@ -17,13 +17,13 @@
 
 - has_many :items
 - has_one :destination
-- has_many :purchase
+- has_many :purchases
 
 ## destination テーブル
 
 | Column       | Type       | Options                          |
 | ------------ | ---------- |--------------------------------- |
-| user_id      | references | null: false, foreign_key:true    |
+| user         | references | null: false, foreign_key:true    |
 | post_code    | integer(8) | null: false                      |
 | prefecture   | string     | null: false                      |
 | city         | string     | null: false                      |
@@ -31,10 +31,12 @@
 | phone_number | integer(11)| null: false, unique: true        |
 | family_name  | string     | null: false                      |
 | first_name   | string     | null: false                      |
+| purchase     | references | null: false, foreign_key: true   |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :purchase
 
 ## items テーブル
 
@@ -42,13 +44,13 @@
 | ------------------- | ---------- | ------------------------------ |
 | name                | string     | null: false                    |
 | price               | integer    | null: false                    |
-| description         | string     | null: false                    |
+| description         | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | status_id           | integer    | null: false                    |
 | shipping_cost_id    | integer    | null: false                    |
 | shipping_address_id | integer    | null: false                    |
 | shipping_days_id    | integer    | null: false                    |
-| user_id             | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,10 +61,11 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| buyer_user_id    | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
+| buyer_user       | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
+- has_one :destination
