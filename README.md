@@ -22,7 +22,7 @@
 
 | Column       | Type       | Options                          |
 | ---------    | ---------- |--------------------------------- |
-| user_id      | integer    | null: false, foreign_key:true    |
+| user_id      | references    | null: false, foreign_key:true    |
 | post_code    | string     | null: false                      |
 | prefecture   | string     | null: false                      |
 | city         | string     | null: false                      |
@@ -47,7 +47,7 @@
 | shipping_cost    | integer | null: false                    |
 | shipping_address | integer | null: false                    |
 | shipping_days    | integer | null: false                    |
-| user_id          | integer | null: false, foreign_key: true |
+| user_id          | references | null: false, foreign_key: true |
 
 ### Association
 
