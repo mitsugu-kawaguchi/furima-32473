@@ -28,6 +28,7 @@
 | address       | string     | null: false                      |
 | phone_number  | string     | null: false, unique: true        |
 | purchase      | references | null: false, foreign_key: true   |
+| building_name | string     |                                  |
 
 ### Association
 
@@ -56,7 +57,7 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| buyer_user       | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
 
 ### Association
