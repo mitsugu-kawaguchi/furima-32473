@@ -1,4 +1,11 @@
 class Item < ApplicationRecord
+  with_options presence: true do
+    validates :name
+    validates :price
+    validates :description
+    validates :image
+  end
+
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
