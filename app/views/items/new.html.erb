@@ -22,7 +22,7 @@
           クリックしてファイルをアップロード
         </p>
         <%= f.file_field :image, id:"item-image" %>
-        <%= image_tag item.image.variant(resize: '500x500'), class: 'item-image' if @item.image.attached? %>
+        <%= image_tag @item.image.variant(resize: '500x500'), class: 'item-image' if @item.image.attached? %>
       </div>
     </div>
     <%# /出品画像 %>
