@@ -6,7 +6,6 @@ class ShippingDay < ActiveHash::Base
     { id: 4, name: '支払い後、4〜7日で発送' }
   ]
 
-
   include ActiveHash::Associations
   has_many :items
 end

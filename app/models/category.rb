@@ -16,8 +16,6 @@ class Category < ActiveHash::Base
     { id: 14, name: '自転車/バイク' },
     { id: 15, name: 'その他' }
   ]
- 
-
 
   include ActiveHash::Associations
   has_many :items

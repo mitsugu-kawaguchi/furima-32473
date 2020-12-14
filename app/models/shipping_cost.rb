@@ -5,7 +5,6 @@ class ShippingCost < ActiveHash::Base
     { id: 3, name: '着払い（購入者が負担）' }
   ]
 
-
   include ActiveHash::Associations
   has_many :items
 end
