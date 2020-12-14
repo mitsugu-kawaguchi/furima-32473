@@ -14,7 +14,14 @@ class Item < ApplicationRecord
       validates :status_id
       validates :shipping_cost_id
       validates :prefecture_id
-      validates :shipping_days_id
+      validates :shipping_day_id
     end
   end
+
+  belongs_to :category
+  belongs_to :status
+  belongs_to :shipping_cost
+  belongs_to :prefecture
+  belongs_to :shipping_day
+
 end
