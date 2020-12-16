@@ -7,6 +7,5 @@ class Destination < ApplicationRecord
     validates :address
     validates :phone_number,  format: {with: /\A\d{11}\z/, message: ""}
     validates :prefecture_id, numericality: { other_than: 1 }
-    end
   end
 end
