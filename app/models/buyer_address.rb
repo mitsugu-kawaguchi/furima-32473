@@ -34,8 +34,8 @@ class BuyerAddress
 
   def save
     user =  User.create(nickname: nickname, email: email, password: password, first_name: first_name, family_name: family_name, first_name_kana: first_name_kana, family_name_kana: family_name_kana, birth_day: birth_day)
-    Item.create(name: name, description: description, image: image, price: price,category_id: category_id, status_id: status_id, shipping_cost_id: shipping_cost_id, prefecture_id: prefecture_id,shipping_day_id: shipping_day_id, user_id: user.id)
-    Destination.create(post_code: post_code, prefecture_id: prefecture_id, city: city, phone_number: phone_number, building_name: building_name, purchase_id: purchase.id)
+    Item.create(name: name, description: description, image: image, price: price, categoryid: category_id, status_id: status.id, shipping_cost_id: shipping_cost.id, prefecture_id: prefecture.id,shipping_day_id: shipping_day.id, user_id: user.id)
+    Destination.create(post_code: post_code, prefecture_id: prefecture.id, city: city, address: address, phone_number: phone_number, building_name: building_name, purchase_id: purchase.id)
     Purchase.create(user_id: user.id, item_id: item.id)
   end
 end
