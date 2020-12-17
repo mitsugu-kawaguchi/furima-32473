@@ -4,7 +4,9 @@ class PurchasesController < ApplicationController
 
   def index
     @buyer_address = BuyerAddress.new
-    redirect_to root_path if @item.purchase.user_id == current_user.id
+    if @item.purchase.blank? && !current_user.id == !@item.user_id
+      redirect_to root_path
+    end
   end
 
   def create
