@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe BuyerAddress, type: :model do
-    before do
-      @buyer_address = FactoryBot.build(:buyer_address)
-    end
+  before do
+    @buyer_address = FactoryBot.build(:buyer_address)
+  end
 
   describe '商品購入機能' do
     context '商品購入がうまくいくとき' do
@@ -21,7 +21,7 @@ RSpec.describe BuyerAddress, type: :model do
       it 'post_codeにハイフンがないと購入できない' do
         @buyer_address.post_code = '1234567'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@buyer_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'prefecture_idが空だと購入できない' do
         @buyer_address.prefecture_id = nil
@@ -55,19 +55,19 @@ RSpec.describe BuyerAddress, type: :model do
       it 'phone_numberが10桁だと購入できない' do
         @buyer_address.phone_number = '0000000000'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number is invalud. Only 11th digits")
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
       end
       it 'phone_numberが半角英語だと購入できない' do
         @buyer_address.phone_number = 'aaaaaaaaaaa'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number is invalud. Only 11th digits")
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
       end
       it 'phone_numberが半角英数混合だと購入できない' do
         @buyer_address.phone_number = 'aaaaaa00000'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include("Phone number is invalud. Only 11th digits")
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
       end
-      it "tokenが空では購入できないこと" do
+      it 'tokenが空では購入できないこと' do
         @buyer_address.token = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
