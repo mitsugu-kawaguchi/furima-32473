@@ -70,7 +70,7 @@ RSpec.describe BuyerAddress, type: :model do
       it "tokenが空では購入できないこと" do
         @buyer_address.token = nil
         @buyer_address.valid?
-        expect(buyer_address.errors.full_messages).to include("Token can't be blank")
+        expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
