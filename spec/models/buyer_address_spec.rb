@@ -67,6 +67,11 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Phone number is invalud. Only 11th digits")
       end
+      it "tokenが空では購入できないこと" do
+        @buyer_address.token = nil
+        @buyer_address.valid?
+        expect(buyer_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
