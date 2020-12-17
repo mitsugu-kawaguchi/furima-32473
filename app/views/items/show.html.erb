@@ -9,7 +9,7 @@
     <div class='item-img-content'>
       <%= image_tag @item.image.variant(resize: '500x500'), class:"item-box-img" if @item.image.attached? %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <% if @items.present? %>
+      <% if @item.purchase.present? %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        <%= @item.price %>
       </span>
       <span class="item-postage">
         <%= @item.shipping_cost.name %>
