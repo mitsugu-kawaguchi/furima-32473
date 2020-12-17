@@ -7,7 +7,11 @@ RSpec.describe BuyerAddress, type: :model do
 
   describe '商品購入機能' do
     context '商品購入がうまくいくとき' do
-      it '郵便番号、都道府県、市区町村、番地、TELが存在すれば購入できる' do
+      it '郵便番号、都道府県、市区町村、番地、TEL、user_id、item_idが存在すれば購入できる' do
+        expect(@buyer_address).to be_valid
+      end
+      it 'building_nameは空でも購入できる' do
+        @buyer_address.building_name = nil
         expect(@buyer_address).to be_valid
       end
     end
@@ -43,17 +47,13 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Address can't be blank")
       end
-      it 'building_nameは空でも購入できる' do
-        @buyer_address.building_name = nil
-        expect(@buyer_address).to be_valid
-      end
       it 'phone_numberが空だと購入できない' do
         @buyer_address.phone_number = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが10桁だと購入できない' do
-        @buyer_address.phone_number = '0000000000'
+      it 'phone_numberが11桁以内でないと購入できない' do
+        @buyer_address.phone_number = '000000000000'
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
       end
@@ -71,6 +71,16 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.token = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空では購入できないこと' do
+        @buyer_address.user_id = nil
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空では購入できないこと' do
+        @buyer_address.item_id = nil
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
