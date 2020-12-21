@@ -7,7 +7,9 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag @item.image.variant(resize: '500x500'), class: 'buy-item-img' if @item.image.attached? %>
+      <% @item.images.each do |image| %>
+        <%= image_tag image.variant(resize: "500x500"), class:"buy-item-img" %>
+      <% end %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
           <%= @item.name %>
@@ -71,9 +73,9 @@
           <%= f.text_field :cvc,class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
         </div>
       </div>
-    
+
       <%# /カード情報の入力 %>
-    
+
       <%# 配送先の入力 %>
       <div class='shipping-address-form'>
         <h1 class='info-input-haedline'>
