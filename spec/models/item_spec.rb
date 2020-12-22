@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
 
     describe '商品出品機能' do
       context '商品出品がうまくいくとき' do
-        it 'image、name、price、description、category_id、status_id、shipping_cost_id、prefecture_id、shipping_day_idが存在すれば登録できる' do
+        it 'images、name、price、description、category_id、status_id、shipping_cost_id、prefecture_id、shipping_day_idが存在すれば登録できる' do
           expect(@item).to be_valid
         end
       end
@@ -76,9 +76,9 @@ RSpec.describe Item, type: :model do
       end
 
       it 'imageが空だと出品できない' do
-        @item.image = nil
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Images can't be blank")
       end
 
       it 'category_idの値が1であれば出品できない' do

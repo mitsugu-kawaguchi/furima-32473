@@ -25,7 +25,7 @@ RSpec.describe BuyerAddress, type: :model do
       it 'post_codeにハイフンがないと購入できない' do
         @buyer_address.post_code = '1234567'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
+        expect(@buyer_address.errors.full_messages).to include('Post code is invalid')
       end
       it 'prefecture_idが空だと購入できない' do
         @buyer_address.prefecture_id = nil
@@ -55,17 +55,17 @@ RSpec.describe BuyerAddress, type: :model do
       it 'phone_numberが11桁以内でないと購入できない' do
         @buyer_address.phone_number = '000000000000'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが半角英語だと購入できない' do
         @buyer_address.phone_number = 'aaaaaaaaaaa'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが半角英数混合だと購入できない' do
         @buyer_address.phone_number = 'aaaaaa00000'
         @buyer_address.valid?
-        expect(@buyer_address.errors.full_messages).to include('Phone number is invalud. Only 11th digits')
+        expect(@buyer_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'tokenが空では購入できないこと' do
         @buyer_address.token = nil
