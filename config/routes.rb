@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'cards/new'
   get 'users/show'
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
   root to: 'items#index'
   get 'items/search'
   resources :items do
