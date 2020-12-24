@@ -17,6 +17,9 @@
 
 - has_many :items
 - has_many :purchases
+- has_many :comments
+- has_many :sns_credentials
+- has_one :card
 
 ## destination テーブル
 
@@ -52,6 +55,8 @@
 
 - belongs_to :user
 - has_one :purchase
+- has_many :comments,dependent: :destroy
+- has_many_attached :images
 
 ## purchase テーブル
 
@@ -65,3 +70,40 @@
 - belongs_to :user
 - belongs_to :item
 - has_one :destination
+
+## comment テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+| text             | text       | null: false                    |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## sns_credential テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| provider         | string     |                                |
+| uid              | string     |                                |
+| user             | references | foreign_key: true              |
+
+### Association
+
+- belongs_to :user
+
+## card テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| token            | string     | null: false                    |
+| customer_token   | string     | null: false                    |
+| user             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
