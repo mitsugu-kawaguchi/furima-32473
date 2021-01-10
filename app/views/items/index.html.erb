@@ -133,7 +133,7 @@
             <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
                 <div class= 'images'>
-                  <%= image_tag item.images[0], class:'item-image' %>
+                  <%= image_tag item.images[0], class:'item-img' %>
                 </div>
                 <%# 商品が売れていればsold outを表示しましょう %>
                 <% if item.purchase.present? %>

@@ -11,7 +11,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
      const blobImage = document.createElement('img');
      blobImage.setAttribute('src', blob);
-     blobImage.width= 200;
+     blobImage.width= 250;
      blobImage.height= 200;
 
      const inputHTML = document.createElement('input')
